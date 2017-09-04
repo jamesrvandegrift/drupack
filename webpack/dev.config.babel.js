@@ -8,6 +8,8 @@ import autoprefixer from 'autoprefixer';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import StyleLintPlugin from 'stylelint-webpack-plugin';
 
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+
 export default {
     entry: entrypoints,
     output: {
@@ -19,6 +21,11 @@ export default {
         new StyleLintPlugin({
             syntax: 'scss',
         }),
+        new HtmlWebpackPlugin({
+            title: 'Drupack',
+            template: path.resolve(__dirname, '../assets/templates/index.ejs'),
+            filename: 'index.html'
+        })
     ],
     module: {
         loaders: [
